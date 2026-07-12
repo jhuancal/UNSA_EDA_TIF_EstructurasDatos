@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #fcf9f0;
+    color: #1c1c17;
+  }
+}
+
+.paper-texture {
+  background-color: #fcf9f0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.ink-border {
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  box-shadow: 2px 2px 0px 0px rgba(26, 26, 26, 0.05);
+}
+
+.ink-border-active {
+  border: 2px solid rgba(26, 26, 26, 0.8);
+  box-shadow: 4px 4px 0px 0px rgba(26, 26, 26, 0.1);
+}
+
+.ink-border-thick {
+  border: 2px solid rgba(26, 26, 26, 0.8);
+}
+
+.ink-bleed {
+  box-shadow: 0 4px 20px -2px rgba(26, 26, 26, 0.05);
+}
+
+/* Custom styles for nodes */
+.tree-node {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fcf9f0;
+  border: 2px solid #1a1a1a;
+  position: relative;
+  font-family: 'Source Serif 4', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 0px rgba(26, 26, 26, 0.1);
+}
+
+.tree-node.dummy-node {
+  border-style: dashed;
+  background-color: #ebe8df;
+  font-style: italic;
+  font-size: 14px;
+  border-width: 1.5px;
+}
+
+.tree-node.visited {
+  background-color: #d8e0cc;
+  border-color: #596152;
+}
+
+.tree-node.active-highlight {
+  background-color: #d8e0cc;
+  border-color: #596152;
+  box-shadow: 0px 0px 8px rgba(89, 97, 82, 0.5);
+  transform: scale(1.1);
+}
+
+.tree-node.leak-highlight {
+  background-color: #ffdad6;
+  border-color: #ba1a1a;
+  color: #ba1a1a;
+  box-shadow: 0px 0px 8px rgba(186, 26, 26, 0.5);
+  transform: scale(1.05);
+}
+
+.hand-drawn-line {
+  fill: none;
+  stroke: #1a1a1a;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: url(#roughness);
+}
+
+.hand-drawn-line.active {
+  stroke: #596152;
+  stroke-width: 2.2;
+}
+
+.hand-drawn-line.leak {
+  stroke: #ba1a1a;
+  stroke-width: 2;
+  stroke-dasharray: 4, 3;
+}
+
+.typewriter-log {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #f6f3ea;
+}
