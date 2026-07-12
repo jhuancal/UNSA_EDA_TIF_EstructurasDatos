@@ -24,8 +24,8 @@ dist-ssr
 *.sw?
 
 #Carpetas NoteBookLM y Stitch
-.notebookml/*
-.stitch/*
+notebooklm
+stitch
 
 
 
