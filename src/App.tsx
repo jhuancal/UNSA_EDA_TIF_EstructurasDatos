@@ -6,6 +6,10 @@ import { BSTSimulator } from './core/BST';
 import { VirtualHeap } from './core/VirtualHeap';
 import { Sidebar } from './components/Sidebar';
 import { Canvas } from './components/Canvas';
+import { StackCanvas } from './components/StackCanvas';
+import { QueueCanvas } from './components/QueueCanvas';
+import { BSTCanvas } from './components/BSTCanvas';
+import { DLLCanvas } from './components/DLLCanvas';
 import { CodeLog } from './components/CodeLog';
 import { HeapViewer } from './components/HeapViewer';
 import type { SimulationStep } from './core/types';
@@ -498,13 +502,43 @@ function App() {
 
               {/* Dynamic canvas */}
               <div className="flex-1 min-h-[360px] md:min-h-[480px]">
-                <Canvas
-                  structureType={activeTab}
-                  memorySnapshot={currentFrame.memorySnapshot}
-                  pointers={currentFrame.pointers}
-                  activeNodes={currentFrame.activeNodes}
-                  leakAddresses={currentFrame.leakAddresses}
-                />
+                {activeTab === 'stack' ? (
+                  <StackCanvas
+                    memorySnapshot={currentFrame.memorySnapshot}
+                    pointers={currentFrame.pointers}
+                    activeNodes={currentFrame.activeNodes}
+                    leakAddresses={currentFrame.leakAddresses}
+                  />
+                ) : activeTab === 'queue' ? (
+                  <QueueCanvas
+                    memorySnapshot={currentFrame.memorySnapshot}
+                    pointers={currentFrame.pointers}
+                    activeNodes={currentFrame.activeNodes}
+                    leakAddresses={currentFrame.leakAddresses}
+                  />
+                ) : activeTab === 'bst' ? (
+                  <BSTCanvas
+                    memorySnapshot={currentFrame.memorySnapshot}
+                    pointers={currentFrame.pointers}
+                    activeNodes={currentFrame.activeNodes}
+                    leakAddresses={currentFrame.leakAddresses}
+                  />
+                ) : activeTab === 'dll' ? (
+                  <DLLCanvas
+                    memorySnapshot={currentFrame.memorySnapshot}
+                    pointers={currentFrame.pointers}
+                    activeNodes={currentFrame.activeNodes}
+                    leakAddresses={currentFrame.leakAddresses}
+                  />
+                ) : (
+                  <Canvas
+                    structureType={activeTab}
+                    memorySnapshot={currentFrame.memorySnapshot}
+                    pointers={currentFrame.pointers}
+                    activeNodes={currentFrame.activeNodes}
+                    leakAddresses={currentFrame.leakAddresses}
+                  />
+                )}
               </div>
 
               {/* Bottom Row - Split: CodeLog on left, HeapViewer on right */}
